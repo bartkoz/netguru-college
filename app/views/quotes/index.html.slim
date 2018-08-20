@@ -1,0 +1,15 @@
+= flash[:notice]
+div style = "width:40vw; text-align:center; margin:0 auto;"
+  = link_to 'Add', new_quote_path, class: 'btn btn-secondary'
+  table.table.mx-auto
+    thead
+      tr
+        th #
+        th Created
+        th Quote
+      - @quotes.each_with_index do |quote, i|
+        tr
+          td =i+1
+          td =quote.created_at.strftime("%d %B %Y")
+          td =quote.body
+  = will_paginate @quotes, renderer: BootstrapPagination::Rails
